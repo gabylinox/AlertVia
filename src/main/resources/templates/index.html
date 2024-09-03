@@ -18,142 +18,14 @@
 
 
     <!-- Sidebar Start -->
-    <div class="sidebar pe-4 pb-3">
-        <nav class="navbar bg-secondary navbar-dark">
-            <a href="index.html" class="navbar-brand mx-4 mb-3">
-                <h3>
-                    <img src="assets/img/logo.png" alt="Descrição da Imagem" class="me-2" style="width: 1em; height: auto; vertical-align: middle;">
-                    <span style="color: red; font-weight: bold;">AlertVia</span>
-                </h3>            </a>
-            <div class="d-flex align-items-center ms-4 mb-4">
-                <div class="position-relative">
-                    <img class="rounded-circle" src="assets/img/image 4.png" alt="" style="width: 40px; height: 40px;">
-                    <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
-                </div>
-                <div class="ms-3">
-                    <h6 class="mb-0">Pedro Tavares</h6>
-                    <span>Adm</span>
-                </div>
-            </div>
-            <div class="navbar-nav w-100">
-                <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Inicio</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Ocorrências</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="button.html" class="dropdown-item">Tipo de Ocorrência</a>
-                        <a href="typography.html" class="dropdown-item">Urgências</a>
-                        <a href="element.html" class="dropdown-item">Locais</a>
-                    </div>
-                </div>
-                <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Elementos</a>
-                <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Formulários</a>
-                <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tabelas</a>
-                <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Graficos</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="signin.html" class="dropdown-item">Entrar</a>
-                        <a href="signup.html" class="dropdown-item">Cadastro</a>
-                        <a href="404.html" class="dropdown-item">404 Error</a>
-                        <a href="blank.html" class="dropdown-item">Blank Page</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </div>
+    <div th:replace="~{/fragments/sidebar.html :: sidebar}"></div>
     <!-- Sidebar End -->
 
 
     <!-- Content Start -->
     <div class="content">
         <!-- Navbar Start -->
-        <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-            <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                <h2 class="text-primary mb-0"><i class="/assets/img/logoTCC.png"></i></h2>
-            </a>
-            <a href="#" class="sidebar-toggler flex-shrink-0">
-                <i class="fa fa-bars"></i>
-            </a>
-            <form class="d-none d-md-flex ms-4">
-                <input class="form-control bg-dark border-0" type="search" placeholder="Pesquisar">
-            </form>
-            <div class="navbar-nav align-items-center ms-auto">
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <i class="fa fa-envelope me-lg-2"></i>
-                        <span class="d-none d-lg-inline-flex">Mensagem</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                        <a href="#" class="dropdown-item">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle" src="assets/img/gavi.webp" alt="" style="width: 40px; height: 40px;">
-                                <div class="ms-2">
-                                    <h6 class="fw-normal mb-0">Gavi te enviou uma mensagem!</h6>
-                                    <small>15 minutos atras</small>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle" src="assets/img/yamal.webp" alt="" style="width: 40px; height: 40px;">
-                                <div class="ms-2">
-                                    <h6 class="fw-normal mb-0">Yamal te enviou uma mensagem!</h6>
-                                    <small>15 minutos atras</small>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle" src="assets/img/mason.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="ms-2">
-                                    <h6 class="fw-normal mb-0">Mason te enviou uma mensagem!</h6>
-                                    <small>15 minutos atras</small>
-                                </div>
-                            </div>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item text-center">Ver todas as mensagens</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <i class="fa fa-bell me-lg-2"></i>
-                        <span class="d-none d-lg-inline-flex">Notificações</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                        <a href="#" class="dropdown-item">
-                            <h6 class="fw-normal mb-0">Perfil atualizado!</h6>
-                            <small>15 minutos atrás.</small>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item">
-                            <h6 class="fw-normal mb-0">Email verificado!</h6>
-                            <small>10 minutos atrás.</small>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item">
-                            <h6 class="fw-normal mb-0">Cadastro realizado!</h6>
-                            <small>5 minutos atrás.</small>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item text-center">Ver todas as notificações</a>
-                    </div>
-                </div>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <img class="rounded-circle me-lg-2" src="assets/img/image 4.png" alt="" style="width: 40px; height: 40px;">
-                        <span class="d-none d-lg-inline-flex">Pedro Tavares</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                        <a href="#" class="dropdown-item">Meu perfil</a>
-                        <a href="#" class="dropdown-item">Configurações</a>
-                        <a href="#" class="dropdown-item">Sair</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        <div th:replace="~{/fragments/navbar.html :: navbar}"></div>
         <!-- Navbar End -->
 
 
@@ -438,6 +310,5 @@
 <div th:replace="~{/fragments/javascript-lib.html :: javascriptlib}"></div>
 
 </body>
-
 </html>
 
