@@ -1,6 +1,5 @@
 package br.com.alertvia.model;
 
-
 import br.com.alertvia.enums.EstadoCivil;
 import br.com.alertvia.enums.Etnia;
 import br.com.alertvia.enums.Sexo;
@@ -28,9 +27,9 @@ import java.util.List;
 )
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(
-    name = "tipoPessoa",
-    length = 1,
-    discriminatorType = DiscriminatorType.STRING
+        name = "tipoPessoa",
+        length = 1,
+        discriminatorType = DiscriminatorType.STRING
 )
 public class Pessoa {
 
