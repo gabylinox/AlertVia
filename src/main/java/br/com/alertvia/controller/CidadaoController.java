@@ -2,13 +2,16 @@ package br.com.alertvia.controller;
 
 import br.com.alertvia.Repository.CidadaoRepository;
 import br.com.alertvia.model.Cidadao;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/cidadao")
@@ -43,12 +46,19 @@ public class CidadaoController {
     }
 
     @PostMapping("/salvar")
-    public String salvar(Cidadao cidadao){
+    public String salvar(@Valid Cidadao cidadao, BindingResult result, RedirectAttributes attributes){
+
+        if(result.hasErrors()){
+            return "cidadao/form-inserir";
+        }
+
+        attributes.addFlashAttribute("mensagem", "Cidadão salvo com sucesso!");
+
         cidadaoRepository.save(cidadao);
         return "redirect:/cidadao";
     }
 
-    
+
 
 
 }
