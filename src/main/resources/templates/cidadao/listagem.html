@@ -47,7 +47,6 @@
                                         <tr>
                                             <th style="width: 7%">ID</th>
                                             <th>Nome</th>
-                                            <th>Telefone</th>
                                             <th>Email</th>
                                             <th class="text-center" style="width: 7%">Ações</th>
                                         </tr>
@@ -56,14 +55,14 @@
                                         <tr>
                                             <th style="width: 7%">ID</th>
                                             <th>Nome</th>
-                                            <th>Telefone</th>
                                             <th>Email</th>
                                             <th class="text-center" style="width: 7%">Ações</th>
                                         </tr>
                                         </tfoot>
                                         <tbody>
-                                        <tr >
-                                            <td colspan="2">Nenhum registro encontrado</td>
+
+                                        <tr th:if="${cidadoes.empty}">
+                                            <td colspan="4">Nenhum registro encontrado</td>
                                         </tr>
 
                                         <tr th:each="cidadao : ${cidadoes}" >
@@ -72,9 +71,6 @@
                                             </td>
                                             <td>
                                                 <span th:text="${cidadao.nome}">Nome</span>
-                                            </td>
-                                            <td>
-                                                <span th:text="${cidadao.telefone}">Telefone</span>
                                             </td>
                                             <td>
                                                 <span th:text="${cidadao.email}">Email</span>
