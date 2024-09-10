@@ -7,7 +7,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.management.relation.Role;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -22,17 +21,11 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique=true)
     private Long id;
-
     private String firstName;
-
     private String lastName;
-
     private String email;
-
     private String username;
-
     private String password;
-
     private String image;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -50,7 +43,7 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorityList = new ArrayList<>();
         for(Role role: roles) {
-            SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getRoleName());
+            SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getName());
             authorityList.add(authority);
         }
         return authorityList;
