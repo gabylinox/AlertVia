@@ -1,7 +1,7 @@
 package br.com.alertvia.controller;
 
-import br.com.alertvia.Repository.CidadaoRepository;
-import br.com.alertvia.model.Cidadao;
+import br.com.alertvia.model.Ocorrencia;
+import br.com.alertvia.repository.OcorrenciaRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,49 +14,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/cidadao")
-public class CidadaoController {
+@RequestMapping("/ocorrencia")
+public class OcorrenciaController {
     @Autowired
-    private CidadaoRepository cidadaoRepository;
+    private OcorrenciaRepository ocorrenciaRepository;
 
 
     @GetMapping
     public String listar(Model model){
-        model.addAttribute("cidadoes",     cidadaoRepository.findAll());
-        //return "cidadao/listagem";
+        model.addAttribute("ocorrencias",     ocorrenciaRepository.findAll());
+        //return "ocorrencia/listagem";
         return "ocorrencias/ocorrencias";
     }
 
     @GetMapping("/form-inserir")
     public String formInserir(Model model){
-        model.addAttribute("cidadao", new Cidadao());
-        return "cidadao/form-inserir";
+        model.addAttribute("ocorrencia", new Ocorrencia());
+        return "ocorrencias/form-inserir";
     }
 
     @GetMapping("/form-alterar/{id}")
     public String formAlterar(Model model, @PathVariable Long id){
-        Cidadao cidadao = cidadaoRepository.findById(id).get();
-        model.addAttribute("cidadao", cidadao);
-        return "cidadao/form-alterar";
+        Ocorrencia ocorrencia = ocorrenciaRepository.findById(id).get();
+        model.addAttribute("ocorrencia", ocorrencia);
+        return "ocorrencia/form-alterar";
     }
 
     @GetMapping("/excluir/{id}")
     public String excluir(@PathVariable Long id){
-        cidadaoRepository.deleteById(id);
-        return "redirect:/cidadao";
+        ocorrenciaRepository.deleteById(id);
+        return "redirect:/ocorrencia";
     }
 
     @PostMapping("/salvar")
-    public String salvar(@Valid Cidadao cidadao, BindingResult result, RedirectAttributes attributes){
+    public String salvar(@Valid Ocorrencia ocorrencia, BindingResult result, RedirectAttributes attributes){
 
         if(result.hasErrors()){
-            return "cidadao/form-inserir";
+            return "ocorrencia/form-inserir";
         }
 
-        attributes.addFlashAttribute("mensagem", "Cidadão salvo com sucesso!");
+        attributes.addFlashAttribute("mensagem", "Ocorrencia salva com sucesso!");
 
-        cidadaoRepository.save(cidadao);
-        return "redirect:/cidadao";
+        ocorrenciaRepository.save(ocorrencia);
+        return "redirect:/ocorrencia";
     }
 
 
