@@ -81,7 +81,7 @@ public class UserController {
 
         attributes.addFlashAttribute("mensagem", "Usuário salvo com sucesso!");
 
-        return "redirect:/usuario";
+        return "redirect:/user";
     }
 
 
@@ -89,6 +89,6 @@ public class UserController {
     public String excluir(@PathVariable("id") Long id, RedirectAttributes attributes){
         userRepository.deleteById(id);
         attributes.addFlashAttribute("mensagem", "Usuário excluído com sucesso!");
-        return "redirect:/usuario";
+        return "redirect:/user";
     }
 }
