@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<div th:replace="~{/fragments/heads-lib.html :: heads}"></div>
+<div th:replace="~{/fragments/heads.html :: heads}"></div>
 
 
 <body>
-    <div class="container-fluid position-relative d-flex p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Carregando...</span>
-            </div>
+<div class="container-fluid position-relative d-flex p-0">
+    <!-- Spinner Start -->
+    <div id="spinner"
+         class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Carregando...</span>
         </div>
-        <!-- Spinner End -->
+    </div>
+    <!-- Spinner End -->
 
-
+    <form th:action="@{login}" method="post">
         <!-- Sign In Start -->
         <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
@@ -27,11 +28,21 @@
                             <h3>Logar</h3>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="nome@exemplo.com">
+                            <input
+                                    type="text"
+                                    name="username"
+                                    class="form-control"
+                                    id="floatingInput"
+                                    placeholder="nome@exemplo.com">
                             <label for="floatingInput">Email</label>
                         </div>
                         <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Senha">
+                            <input
+                                    type="password"
+                                    name="password"
+                                    class="form-control"
+                                    id="floatingPassword"
+                                    placeholder="Senha">
                             <label for="floatingPassword">Senha</label>
                         </div>
                         <div class="d-flex align-items-center justify-content-between mb-4">
@@ -41,20 +52,21 @@
                             </div>
                             <a href="">Esqueceu a senha?</a>
                         </div>
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
-                        <p class="text-center mb-0">não possui conta? <a href="">Sign Up</a></p>
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Logar</button>
+                        <p class="text-center mb-0">não possui conta? <a href="#">Registrar</a></p>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Sign In End -->
-    </div>
+    </form>
+</div>
 
-    <!-- JavaScript Libraries -->
-    <div th:replace="~{/fragments/javascript-lib.html :: javascriptlib}"></div>
+<!-- JavaScript Libraries -->
+<div th:replace="~{/fragments/javascript-lib.html :: javascriptlib}"></div>
 
-    <!-- Template Javascript -->
-    <script src="../assets/js/main.js"></script>
+<!-- Template Javascript -->
+<script src="../assets/js/main.js"></script>
 
 </body>
 </html>
