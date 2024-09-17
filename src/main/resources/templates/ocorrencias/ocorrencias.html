@@ -22,7 +22,7 @@
     <div th:replace="~{/fragments/sidebar.html :: sidebar}"></div>
     <!-- Sidebar End -->
 
-    <form th:action="@{/ocorrencia/salvar}" th:object="${ocorrencia}" method="post">
+    <form th:action="@{/ocorrencia/salvar}" th:object="${ocorrencia}" method="post" enctype="multipart/form-data">
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
@@ -31,16 +31,6 @@
 
             <!-- Form Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6">
-                    </div>
-                    //
-
-
-                </div>
-
-
-                //
 
                 <div class="bg-secondary rounded h-100 p-4">
                     <center><h6 class="mb-4">Cadastro de Ocorrência</h6></center>
@@ -49,14 +39,19 @@
                         <label for="cep">CEP</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="rua"
+                        <input type="text" class="form-control" id="rua" th:field="*{endereco.logradouro}"
                                placeholder="Leave a comment here">
                         <label for="rua">Nome da Rua</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="bairro"
+                        <input type="text" class="form-control" id="bairro" th:field="*{endereco.localidade}"
                                placeholder="Leave a comment here">
                         <label for="bairro">Bairro</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="uf" th:field="*{endereco.uf}"
+                               placeholder="Leave a comment here">
+                        <label for="bairro">UF</label>
                     </div>
                     <div class="form-floating mb-3">
                         <select class="form-select" id="floatingSelect"
@@ -70,13 +65,13 @@
                         </select>
                     </div>
                     <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a comment here"
-                                          id="floatingTextarea" style="height: 150px;"></textarea>
-                        <label for="floatingTextarea">Comentarios</label>
+                                <textarea class="form-control" placeholder="Leave a comment here" th:field="*{comentario}"
+                                          id="comentario" style="height: 150px;"></textarea>
+                        <label for="comentario">Comentarios</label>
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Anexe aqui a foto de sua ocorrencia!</label>
-                        <input class="form-control bg-dark" type="file" id="formFile">
+                        <input class="form-control bg-dark" type="file" id="formFile" name="foto">
                     </div>
                     <center>
                         <button type="submit" class="btn btn-primary py-3 w-25 mb">Cadastrar</button>

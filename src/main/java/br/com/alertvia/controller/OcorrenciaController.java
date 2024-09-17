@@ -3,16 +3,18 @@ package br.com.alertvia.controller;
 import br.com.alertvia.model.Endereco;
 import br.com.alertvia.model.Ocorrencia;
 import br.com.alertvia.repository.OcorrenciaRepository;
+import br.com.alertvia.util.FileUploadUtil;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/ocorrencia")
@@ -49,16 +51,35 @@ public class OcorrenciaController {
     }
 
     @PostMapping("/salvar")
-    public String salvar(@Valid Ocorrencia ocorrencia, BindingResult result, RedirectAttributes attributes){
+    public String salvar(
+            @Valid Ocorrencia ocorrencia,
+            BindingResult result,
+            RedirectAttributes attributes,
+            @RequestParam("foto") MultipartFile multipartFile
+    ) throws IOException
+    {
 
         if(result.hasErrors()){
             return "ocorrencia/form-inserir";
         }
 
+        String extensao = StringUtils.getFilenameExtension(multipartFile.getOriginalFilename());
+
         attributes.addFlashAttribute("mensagem", "Ocorrencia salva com sucesso!");
 
         ocorrenciaRepository.save(ocorrencia);
-        return "redirect:/ocorrencia";
+
+        String fileName = ocorrencia.getId() + "." + extensao;
+
+        ocorrencia.setImage(fileName);
+
+        String uploadPasta =  "src/main/resources/static/assets/img/fotos-ocorrencias";
+
+        ocorrenciaRepository.save(ocorrencia);
+
+        FileUploadUtil.saveFile(uploadPasta, fileName, multipartFile);
+
+        return "redirect:/ocorrencia/form-inserir";
     }
 
 
