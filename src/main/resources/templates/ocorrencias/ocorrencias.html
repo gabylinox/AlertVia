@@ -38,6 +38,11 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingInput"
                                placeholder="Leave a comment here">
+                        <label for="floatingInput">CEP</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput"
+                               placeholder="Leave a comment here">
                         <label for="floatingInput">Nome da Rua</label>
                     </div>
                     <div class="form-floating mb-3">
@@ -65,6 +70,7 @@
                         <label for="formFile" class="form-label">Anexe aqui a foto de sua ocorrencia!</label>
                         <input class="form-control bg-dark" type="file" id="formFile">
                     </div>
+                    <center><button type="submit" class="btn btn-primary py-3 w-25 mb">Cadastrar</button></center>
                 </div>
 
             </div>
@@ -76,6 +82,7 @@
             <div th:replace="~{/fragments/footer.html :: footer}"></div>
             <!-- Footer End -->
         </div>
+
         <!-- Content End -->
 
 

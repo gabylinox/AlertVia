@@ -23,8 +23,8 @@ public class CidadaoController {
     @GetMapping
     public String listar(Model model){
         model.addAttribute("cidadoes",     cidadaoRepository.findAll());
-        //return "cidadao/listagem";
-        return "ocorrencias/ocorrencias";
+        return "cidadao/listagem";
+        //return "ocorrencias/ocorrencias";
     }
 
     @GetMapping("/form-inserir")
