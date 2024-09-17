@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class EnderecoPessoa {
+public class Endereco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

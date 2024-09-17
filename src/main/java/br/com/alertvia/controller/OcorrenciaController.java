@@ -1,5 +1,6 @@
 package br.com.alertvia.controller;
 
+import br.com.alertvia.model.Endereco;
 import br.com.alertvia.model.Ocorrencia;
 import br.com.alertvia.repository.OcorrenciaRepository;
 import jakarta.validation.Valid;
@@ -30,7 +31,8 @@ public class OcorrenciaController {
     @GetMapping("/form-inserir")
     public String formInserir(Model model){
         model.addAttribute("ocorrencia", new Ocorrencia());
-        return "ocorrencias/form-inserir";
+        model.addAttribute("endereco", new Endereco());
+        return "ocorrencias/ocorrencias";
     }
 
     @GetMapping("/form-alterar/{id}")

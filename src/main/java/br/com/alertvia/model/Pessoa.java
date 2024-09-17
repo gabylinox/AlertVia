@@ -47,7 +47,7 @@ public class Pessoa {
     private String nome;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private EnderecoPessoa enderecoPessoa;
+    private Endereco endereco;
 
     @NotEmpty(message = "O e-mail deve ser informado")
     @Email(message = "O e-mail informado é inválido")

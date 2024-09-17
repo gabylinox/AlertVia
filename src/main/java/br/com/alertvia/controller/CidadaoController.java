@@ -2,6 +2,7 @@ package br.com.alertvia.controller;
 
 import br.com.alertvia.Repository.CidadaoRepository;
 import br.com.alertvia.model.Cidadao;
+import br.com.alertvia.model.Endereco;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,13 +24,14 @@ public class CidadaoController {
     @GetMapping
     public String listar(Model model){
         model.addAttribute("cidadoes",     cidadaoRepository.findAll());
-        return "cidadao/listagem";
-        //return "ocorrencias/ocorrencias";
+        //return "cidadao/listagem";
+        return "ocorrencias/ocorrencias";
     }
 
     @GetMapping("/form-inserir")
     public String formInserir(Model model){
         model.addAttribute("cidadao", new Cidadao());
+
         return "cidadao/form-inserir";
     }
 
