@@ -71,7 +71,7 @@ public class OcorrenciaController {
 
         String fileName = ocorrencia.getId() + "." + extensao;
 
-        ocorrencia.setImage(fileName);
+        //ocorrencia.setImage(fileName);
 
         String uploadPasta =  "src/main/resources/static/assets/img/fotos-ocorrencias";
 
