@@ -27,7 +27,7 @@
                             <h3 class="text-primary"></i>Cadastro de Cidadão</h3>
                         </a>
                     </div>
-                    <form th:action="@{/cidadao/salvar}" th:object="${cidadao}" method="post">
+                    <form th:action="@{/cidadao/salvar}" th:object="${cidadao}"  method="post">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="nome" placeholder="Usuário" th:field="*{nome}"/>
                             <label for="nome">Usuario</label>
