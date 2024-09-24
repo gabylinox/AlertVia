@@ -26,8 +26,8 @@ public class OcorrenciaController {
     @GetMapping
     public String listar(Model model){
         model.addAttribute("ocorrencias",     ocorrenciaRepository.findAll());
-        //return "ocorrencia/listagem";
-        return "ocorrencias/ocorrencias";
+        return "ocorrencias/listagem";
+        //return "ocorrencias/ocorrencias";
     }
 
     @GetMapping("/form-inserir")
