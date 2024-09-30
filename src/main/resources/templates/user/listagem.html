@@ -48,6 +48,7 @@
                                             <th style="width: 7%">ID</th>
                                             <th>Nome</th>
                                             <th>Email</th>
+                                            <th>Imagens</th>
                                             <th class="text-center" style="width: 7%">Ações</th>
                                         </tr>
                                         </thead>
@@ -63,6 +64,14 @@
                                             </td>
                                             <td>
                                                 <span th:text="${usuario.firstName}">Nome</span>
+                                            </td>
+                                            <td>
+                                                <span th:text="${usuario.email}">Email</span>
+                                            </td>
+                                            <td>
+                                                <img class="imagem-modal" th:src="@{/assets/img/fotos-usuarios/{image}(image=${usuario.image})}" alt="Descrição da imagem" style="height: 100px">
+
+                                                <!--<span th:text="${usuario.image}">Imagem</span>-->
                                             </td>
                                             <td>
                                                 usuario
