@@ -31,6 +31,7 @@ public class SecurityConfig {
         return (web) -> web.ignoring()
                 //.requestMatchers(new AntPathRequestMatcher("/**"))
                 //.requestMatchers(new AntPathRequestMatcher("/user/**"))
+                .requestMatchers(new AntPathRequestMatcher("/publico/**"))
                 .requestMatchers(new AntPathRequestMatcher("/assets/**"));
 
     }
