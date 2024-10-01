@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html xmlns:th="http://www.thymeleaf.org" lang="br">
+<div th:replace="~{/fragments/heads.html :: heads}"></div>
 
 <head>
     <title>AlertVia</title>
-    <div th:replace="~{/fragments/heads.html :: heads}"></div>
 </head>
 
 <body>
@@ -74,76 +74,86 @@
 
 
         <!-- Recent Sales Start -->
-        <div class="container-fluid pt-4 px-4">
-            <div class="bg-secondary text-center rounded p-4">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Lista de Ocorrencias.</h6>
-                    <a href="">Mostrar mais</a>
+        <div class="container">
+            <div class="page-inner">
+                <div class="page-header">
+                    <center><h3 class="fw-bold mb-3">Cadastro de Usuarios</h3></center>
+
                 </div>
-                <div class="table-responsive">
-                    <table class="table text-start align-middle table-bordered table-hover mb-0">
-                        <thead>
-                        <tr class="text-white">
-                            <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                            <th scope="col">Data</th>
-                            <th scope="col">Tipo de ocorrencia</th>
-                            <th scope="col">Cidadão</th>
-                            <th scope="col">Localização</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
-                            <td>01 Jan 2024</td>
-                            <td>Buracos</td>
-                            <td>João Pedro</td>
-                            <td>Rua Antonio Francisco</td>
-                            <td>Urgente</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
-                            <td>01 Jan 2024</td>
-                            <td>Buracos</td>
-                            <td>João Pedro</td>
-                            <td>Rua Antonio Francisco</td>
-                            <td>Urgente</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
-                            <td>01 Jan 2024</td>
-                            <td>Buracos</td>
-                            <td>João Pedro</td>
-                            <td>Rua Antonio Francisco</td>
-                            <td>Urgente</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
-                            <td>01 Jan 2024</td>
-                            <td>Buracos</td>
-                            <td>João Pedro</td>
-                            <td>Rua Antonio Francisco</td>
-                            <td>Urgente</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        <tr>
-                            <td><input class="form-check-input" type="checkbox"></td>
-                            <td>01 Jan 2024</td>
-                            <td>Buracos</td>
-                            <td>João Pedro</td>
-                            <td>Rua Antonio Francisco</td>
-                            <td>Urgente</td>
-                            <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <div class="row">
+                    <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <span th:text="${mensagem}"></span>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+
+                                <span class="card-title">Listagem de Usuario</span>
+                                <a
+                                        th:href="@{/user/form-inserir}"
+                                        class="btn btn-primary"
+                                        style="float: right"
+                                > Novo Cidadão</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table
+                                            id="basic-datatables"
+                                            class="display table table-striped table-hover"
+                                    >
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 7%">ID</th>
+                                            <th>Nome</th>
+                                            <th>Email</th>
+                                            <th>Imagens</th>
+                                            <th class="text-center" style="width: 7%">Ações</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <tr>
+                                            <td colspan="4">Nenhum registro encontrado</td>
+                                        </tr>
+
+                                        <tr th:each="usuario : ${usuarios}" >
+                                            <td style="width: 7%">
+                                                <span th:text="${usuario.id}">ID</span>
+                                            </td>
+                                            <td>
+                                                <span th:text="${usuario.firstName}">Nome</span>
+                                            </td>
+                                            <img class="imagem-modal" th:src="@{/assets/img/fotos-ocorrencias/{image}(image=${ocorrencias.image})}" alt="Descrição da imagem" style="height: 100px">
+
+                                            <td>
+                                                usuario
+                                            <td class="text-center" style="width: 7%">
+                                                <a th:href="@{/user/form-alterar/{id}(id=${usuario.id})}" class="edit" data-toggle="modal">
+                                                    <i class="fa fa-edit" data-toggle="tooltip" title="Alterar"></i>
+                                                </a>
+                                                <a th:href="@{/user/excluir/{id}(id=${usuario.id})}"
+                                                   th:data-confirm-delete="|Você gostaria de apagar ${usuario.firstName}?|"
+                                                   onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false"
+
+                                                   id="alertDelete"
+                                                   class="delete">
+                                                    <i class="fa fa-times" style="color: red; margin-left: 10px;" data-toggle="tooltip" title="Excluir"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
 
         <!-- Footer Start -->
         <div th:replace="~{/fragments/footer.html :: footer}"></div>

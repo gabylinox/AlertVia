@@ -15,10 +15,11 @@
         <div th:replace="~{/fragments/navbar.html :: navbar}"></div>
         <!-- Navbar End -->
 
+
         <div class="container">
             <div class="page-inner">
                 <div class="page-header">
-                    <center><h3 class="fw-bold mb-3">Cadastro de Usuarios</h3></center>
+                    <center><h3 class="fw-bold mb-3">Cadastro de Ocorrências</h3></center>
 
                 </div>
                 <div class="row">
@@ -27,59 +28,55 @@
                         <span th:text="${mensagem}"></span>
                     </div>
                     <div class="col-md-12">
-                        <div class="card bg-secondary">
+                        <div class="card">
                             <div class="card-header">
-                                <span class="card-title">Listagem de Usuario</span>
+
+
+                                <span class="card-title">Listagem de Ocorrências</span>
                                 <a
-                                        th:href="@{/user/form-inserir}"
+                                        th:href="@{/ocorrencia/form-inserir}"
                                         class="btn btn-primary"
                                         style="float: right"
-                                > Novo Cidadão</a>
+                                > Nova Ocorrência</a>
                             </div>
-                            <div class="card-body" style="background-color: #1e2125">
+                            <div class="card-body">
                                 <div class="table-responsive">
                                     <table
                                             id="basic-datatables"
-                                            class="display table table-striped table-hover" style="background-color: #1e2125">
+                                            class="display table table-striped table-hover"
+                                    >
                                         <thead>
                                         <tr>
                                             <th style="width: 7%">ID</th>
-                                            <th>Nome</th>
-                                            <th>Email</th>
+                                            <th>Local</th>
+                                            <th>Urgência</th>
                                             <th>Imagens</th>
                                             <th class="text-center" style="width: 7%">Ações</th>
                                         </tr>
                                         </thead>
                                         <tbody>
 
-                                        <tr th:if="${usuarios.empty}">
+                                        <tr th:if="${ocorrencias.empty}">
                                             <td colspan="4">Nenhum registro encontrado</td>
                                         </tr>
 
-                                        <tr th:each="usuario : ${usuarios}" >
+                                        <tr th:each="usuario : ${ocorrencias}" >
                                             <td style="width: 7%">
-                                                <span th:text="${usuario.id}">ID</span>
+                                                <span th:text="${ocorrencia.id}">ID</span>
                                             </td>
                                             <td>
-                                                <span th:text="${usuario.firstName}">Nome</span>
+                                                <span th:text="${ocorrencia.firstName}">Nome</span>
                                             </td>
-                                            <td>
-                                                <span th:text="${usuario.email}">Email</span>
-                                            </td>
-                                            <td>
-                                                <img class="imagem-modal" th:src="@{/assets/img/fotos-usuarios/{image}(image=${usuario.image})}" alt="Descrição da imagem" style="height: 100px">
-
-                                                <!--<span th:text="${usuario.image}">Imagem</span>-->
-                                            </td>
+                                            <img class="imagem-modal" th:src="@{/assets/img/fotos-ocorrencias/{image}(image=${ocorrencias.image})}" alt="Descrição da imagem" style="height: 100px">
 
                                             <td>
                                                 usuario
                                             <td class="text-center" style="width: 7%">
-                                                <a th:href="@{/user/form-alterar/{id}(id=${usuario.id})}" class="edit" data-toggle="modal">
+                                                <a th:href="@{/ocorrencia/form-alterar/{id}(id=${ocorrencia.id})}" class="edit" data-toggle="modal">
                                                     <i class="fa fa-edit" data-toggle="tooltip" title="Alterar"></i>
                                                 </a>
-                                                <a th:href="@{/user/excluir/{id}(id=${usuario.id})}"
-                                                   th:data-confirm-delete="|Você gostaria de apagar ${usuario.firstName}?|"
+                                                <a th:href="@{/ocorrencia/excluir/{id}(id=${ocorrencia.id})}"
+                                                   th:data-confirm-delete="|Você gostaria de apagar ${ocorrencia.firstName}?|"
                                                    onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false"
 
                                                    id="alertDelete"

@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/a")
 public class IndexController {
 
-    @GetMapping
+    @GetMapping("/index")
     public String index(){
-        return "index";
+        return "/index";
+    }
+
+    @GetMapping("/teste")
+    public String teste(){
+        return "/stats";
     }
 }

@@ -9,39 +9,36 @@
         <nav class="navbar bg-secondary navbar-dark">
             <a href="index.html" class="navbar-brand mx-4 mb-3">
                 <h3>
-                    <img src="/assets/img/logo.png" alt="Descrição da Imagem" class="me-2" style="width: 1em; height: auto; vertical-align: middle;">
+                    <img src="/assets/img/logo.png" alt="Logo AlertVia" class="me-2" style="width: 1em; height: auto; vertical-align: middle;">
                     <span style="color: red; font-weight: bold;">AlertVia</span>
                 </h3>            </a>
             <div class="d-flex align-items-center ms-4 mb-4">
-                <div class="position-relative">
-                    <img class="rounded-circle" src="/assets/img/image 4.png" alt="" style="width: 40px; height: 40px;">
-                    <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
-                </div>
-                <div class="ms-3">
-                    <h6 class="mb-0">Pedro Tavares</h6>
-                    <span>Adm</span>
-                </div>
+
+                    <img
+                            th:if="${#authentication.principal.id}"
+                            th:src="@{/assets/img/fotos-usuarios/{id}(id=${#authentication.principal.image})}"
+                            class="rounded-circle me-lg-2"
+                            alt=""
+                            style="width: 40px; height: 40px;"
+                    >
+                    <span
+                            th:if="${#authentication.principal.id}"
+                            th:text="${#authentication.principal.firstName}"
+                            class="d-none d-lg-inline-flex"
+                    >
+                        Usuário
+                    </span>
             </div>
             <div class="navbar-nav w-100">
-                <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Inicio</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Ocorrências</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="button.html" class="dropdown-item">Tipo de Ocorrência</a>
-                        <a href="typography.html" class="dropdown-item">Urgências</a>
-                        <a href="element.html" class="dropdown-item">Locais</a>
-                    </div>
-
-                </div>
-                <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Elementos</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-                    <div class="dropdown-menu bg-transparent border-0">
-                        <a href="signin.html" class="dropdown-item">Entrar</a>
-                        <a href="signup.html" class="dropdown-item">Cadastro</a>
-                    </div>
-                </div>
+                <a href="/a/index" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Inicio</a>
+                <a href="/ocorrencia" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Ocorrências</a>
+                <a href="/user" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Usuários</a>
+                <a href="/a/teste" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Estatísticas</a>
             </div>
+
+
+        </nav>
+                </div>
         </nav>
     </div>
 

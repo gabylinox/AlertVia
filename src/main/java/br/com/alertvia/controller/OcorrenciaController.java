@@ -26,8 +26,8 @@ public class OcorrenciaController {
     @GetMapping
     public String listar(Model model){
         model.addAttribute("ocorrencias",     ocorrenciaRepository.findAll());
-        //return "ocorrencia/listagem";
-        return "ocorrencias/ocorrencias";
+        return "ocorrencias/listagem";
+        //return "ocorrencias/ocorrencias";
     }
 
     @GetMapping("/form-inserir")
@@ -42,6 +42,7 @@ public class OcorrenciaController {
         Ocorrencia ocorrencia = ocorrenciaRepository.findById(id).get();
         model.addAttribute("ocorrencia", ocorrencia);
         return "ocorrencia/form-alterar";
+        //return "ocorrencias/ocorrencias";
     }
 
     @GetMapping("/excluir/{id}")
@@ -79,7 +80,8 @@ public class OcorrenciaController {
 
         FileUploadUtil.saveFile(uploadPasta, fileName, multipartFile);
 
-        return "redirect:/ocorrencia/form-inserir";
+        //return "redirect:/ocorrencia/form-inserir";
+        return "redirect:/ocorrencia/ocorrencias";
     }
 
 
