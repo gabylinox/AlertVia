@@ -85,9 +85,12 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         <span th:text="${mensagem}"></span>
                     </div>
+                    <br>
+                    <br>
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
+
                                 <span class="card-title">Listagem de Usuario</span>
                                 <a
                                         th:href="@{/user/form-inserir}"
@@ -106,6 +109,7 @@
                                             <th style="width: 7%">ID</th>
                                             <th>Nome</th>
                                             <th>Email</th>
+                                            <th>Imagens</th>
                                             <th class="text-center" style="width: 7%">Ações</th>
                                         </tr>
                                         </thead>
@@ -122,6 +126,8 @@
                                             <td>
                                                 <span th:text="${usuario.firstName}">Nome</span>
                                             </td>
+                                            <img class="imagem-modal" th:src="@{/assets/img/fotos-ocorrencias/{image}(image=${ocorrencias.image})}" alt="Descrição da imagem" style="height: 100px">
+
                                             <td>
                                                 usuario
                                             <td class="text-center" style="width: 7%">

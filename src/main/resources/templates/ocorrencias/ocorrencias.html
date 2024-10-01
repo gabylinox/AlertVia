@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<div class="container-fluid position-relative d-flex p-0">
+<div class="container-fluid position-relative d-flex p-0" ">
     <!-- Spinner Start -->
     <div id="spinner"
          class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justYify-content-center">
@@ -33,18 +33,18 @@
             <!-- Navbar End -->
 
             <!-- Form Start -->
-            <div class="container-fluid pt-4 px-4">
+            <div class="container-fluid pt-4 px-4" >
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-6">
                     </div>
                 </div>
                 <div class="bg-secondary rounded h-100 p-4">
                     <center><h6 class="mb-4">Cadastro de Ocorrência</h6></center>
-                    <div class="form-floating mb-3">
+                    <div class="form-floating mb-3" style="background-color: #1e2125">
                         <input class="form-control" type="text" id="cep" th:field="*{endereco.cep}">
                         <label for="cep">CEP</label>
                     </div>
-                    <div class="form-floating mb-3">
+                    <div class="form-floating mb-3" style="background-color: #1e2125">
                         <input type="text" class="form-control" id="rua"
                                placeholder="Leave a comment here">
                         <label for="rua">Nome da Rua</label>

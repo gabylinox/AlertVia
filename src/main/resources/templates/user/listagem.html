@@ -15,7 +15,6 @@
         <div th:replace="~{/fragments/navbar.html :: navbar}"></div>
         <!-- Navbar End -->
 
-
         <div class="container">
             <div class="page-inner">
                 <div class="page-header">
@@ -28,7 +27,7 @@
                         <span th:text="${mensagem}"></span>
                     </div>
                     <div class="col-md-12">
-                        <div class="card">
+                        <div class="card bg-secondary">
                             <div class="card-header">
                                 <span class="card-title">Listagem de Usuario</span>
                                 <a
@@ -37,12 +36,11 @@
                                         style="float: right"
                                 > Novo Cidadão</a>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" style="background-color: #1e2125">
                                 <div class="table-responsive">
                                     <table
                                             id="basic-datatables"
-                                            class="display table table-striped table-hover"
-                                    >
+                                            class="display table table-striped table-hover" style="background-color: #1e2125">
                                         <thead>
                                         <tr>
                                             <th style="width: 7%">ID</th>
