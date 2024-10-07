@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="br">
+    <title>Cadastro de Cidadoes</title>
+    <div th:replace="~{/fragments/heads.html :: heads}"></div>
+<body>
+<div class="wrapper">
+    <!-- Sidebar -->
+    <div th:replace="~{/fragments/sidebar.html :: sidebar}"></div>
+    <!-- End Sidebar -->
+
+
+    <!-- Content Start -->
+    <div class="content">
+        <!-- Navbar Start -->
+        <div th:replace="~{/fragments/navbar.html :: navbar}"></div>
+        <!-- Navbar End -->
+
+
+        <div class="container">
+            <div class="page-inner">
+                <div class="page-header">
+                    <center><h3 class="fw-bold mb-3">Tipo de Ocorrência</h3></center>
+
+                </div>
+                <div class="row">
+                    <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <span th:text="${mensagem}"></span>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-title">Listagem de Tipo de Ocorrência</span>
+                                <a
+                                        th:href="@{/tipoocorrencia/form-inserir}"
+                                        class="btn btn-primary"
+                                        style="float: right"
+                                > Novo Tipo de Ocorrência</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table
+                                            id="basic-datatables"
+                                            class="display table table-striped table-hover"
+                                    >
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 7%">ID</th>
+                                            <th>Nome</th>
+                                            <th class="text-center" style="width: 7%">Ações</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+
+                                        <tr th:if="${tipoocorrencias.empty}">
+                                            <td colspan="4">Nenhum registro encontrado</td>
+                                        </tr>
+
+                                        <tr th:each="tipoocorrencia : ${tipoocorrencias}" >
+                                            <td style="width: 7%">
+                                                <span th:text="${tipoocorrencia.id}">ID</span>
+                                            </td>
+                                            <td>
+                                                <span th:text="${tipoocorrencia.nome}">Nome</span>
+                                            </td>
+
+                                            <td class="text-center" style="width: 7%">
+                                                <a th:href="@{/tipoocorrencia/form-alterar/{id}(id=${tipoocorrencia.id})}" class="edit" data-toggle="modal">
+                                                    <i class="fa fa-edit" data-toggle="tooltip" title="Alterar"></i>
+                                                </a>
+                                                <a th:href="@{/tipoocorrencia/excluir/{id}(id=${tipoocorrencia.id})}"
+                                                   th:data-confirm-delete="|Você gostaria de apagar ${tipoocorrencia.nome}?|"
+                                                   onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false"
+
+                                                   id="alertDelete"
+                                                   class="delete">
+                                                    <i class="fa fa-times" style="color: red; margin-left: 10px;" data-toggle="tooltip" title="Excluir"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:replace="~{/fragments/footer.html :: footer}"></div>
+    </div>
+
+    <!-- End Custom template -->
+</div>
+<div th:replace="~{/fragments/javascript-lib.html :: javascriptlib}"></div>
+
+</body>
+</html>

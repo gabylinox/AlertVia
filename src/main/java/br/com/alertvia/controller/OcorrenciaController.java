@@ -1,5 +1,6 @@
 package br.com.alertvia.controller;
 
+import br.com.alertvia.Repository.TipoOcorrenciaRepository;
 import br.com.alertvia.model.Endereco;
 import br.com.alertvia.model.Ocorrencia;
 import br.com.alertvia.repository.OcorrenciaRepository;
@@ -21,6 +22,8 @@ import java.io.IOException;
 public class OcorrenciaController {
     @Autowired
     private OcorrenciaRepository ocorrenciaRepository;
+    @Autowired
+    private TipoOcorrenciaRepository tipoOcorrenciaRepository;
 
 
     @GetMapping
@@ -34,7 +37,10 @@ public class OcorrenciaController {
     public String formInserir(Model model){
         model.addAttribute("ocorrencia", new Ocorrencia());
         model.addAttribute("endereco", new Endereco());
+        model.addAttribute("tipoocorrencias", tipoOcorrenciaRepository.findAll());
+
         return "ocorrencias/ocorrencias";
+
     }
 
     @GetMapping("/form-alterar/{id}")

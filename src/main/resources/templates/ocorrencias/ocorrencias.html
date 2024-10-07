@@ -25,6 +25,7 @@
     <div th:replace="~{/fragments/sidebar.html :: sidebar}"></div>
     <!-- Sidebar End -->
 
+
     <form th:action="@{/ocorrencia/salvar}" th:object="${ocorrencia}" method="post">
         <!-- Content Start -->
         <div class="content">
@@ -40,20 +41,24 @@
                 </div>
                 <div class="bg-secondary rounded h-100 p-4">
                     <center><h6 class="mb-4">Cadastro de Ocorrência</h6></center>
+
                     <div class="form-floating mb-3" style="background-color: #1e2125">
                         <input class="form-control" type="text" id="cep" th:field="*{endereco.cep}">
                         <label for="cep">CEP</label>
                     </div>
+
                     <div class="form-floating mb-3" style="background-color: #1e2125">
                         <input type="text" class="form-control" id="rua"
-                               placeholder="Leave a comment here">
+                               placeholder="Leave a comment here" >
                         <label for="rua">Nome da Rua</label>
                     </div>
+
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="bairro"
-                               placeholder="Leave a comment here">
+                               placeholder="Leave a comment here" >
                         <label for="bairro">Bairro</label>
                     </div>
+
                     <div class="form-floating mb-3">
                         <select class="form-select" id="floatingSelect"
                                 aria-label="Floating label select example">
@@ -65,15 +70,34 @@
                             <option value="3">Iluminação</option>
                         </select>
                     </div>
+
+                    <div class="form-floating mb-3">
+                        <select th:field="*{tipoOcorrencia}"
+                                aria-label="Floating label select example"
+                                class="bg-dark text-black-50 form-select" style="padding: 15px 12px 15px 12px">
+                            <option value="">Selecione tipo de ocorrência</option>
+                            <option
+                                    th:each="tipoocorrencia: ${tipoocorrencias}"
+                                    th:value="${tipoocorrencia.id}"
+                                    th:text="${tipoocorrencia.nome}"
+                            >
+                                tipo ocorrencia
+                            </option>
+                        </select>
+                    </div>
+
+
                     <div class="form-floating">
                                 <textarea class="form-control" placeholder="Leave a comment here"
-                                          id="floatingTextarea" style="height: 150px;"></textarea>
+                                          id="floatingTextarea" style="height: 150px;" th:field="*{endereco.cep}"></textarea>
                         <label for="floatingTextarea">Comentarios</label>
                     </div>
+
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Anexe aqui a foto de sua ocorrencia!</label>
                         <input class="form-control bg-dark" type="file" id="formFile">
                     </div>
+
                     <center>
                         <button type="submit" class="btn btn-primary py-3 w-25 mb">Cadastrar</button>
                     </center>

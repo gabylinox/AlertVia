@@ -1,0 +1,49 @@
+<!-- CADASTRAR CIDADAO-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="br">
+<div th:replace="~{/fragments/heads.html :: heads}"></div>
+
+
+<body>
+<div class="container-fluid position-relative d-flex p-0">
+
+    <div class="container-fluid">
+        <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+
+
+            <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
+                    <div class="d-flex align-items-center justify-content-center mb-3">
+                        <a href="/templates/index.html" class="">
+                            <h3 class="text-primary"></i>Cadastro de Tipo de Ocorrência</h3>
+                        </a>
+                    </div>
+                    <form th:action="@{/tipoocorrencia/salvar}" th:object="${tipoocorrencia}"  method="post">
+                        <input type="hidden" th:field="*{id}">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="nome" placeholder="Usuário" th:field="*{nome}"/>
+                            <label for="nome">Tipo de Ocorrência</label>
+
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Cadastrar</button>
+                    </form>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- Sign Up End -->
+</div>
+
+<div th:replace="~{/fragments/javascript-lib.html :: javascriptlib}"></div>
+
+
+</body>
+</html>
+
+
+    <script src="/assets/js/viacep.js"></script>
