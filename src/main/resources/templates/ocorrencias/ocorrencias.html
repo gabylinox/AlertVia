@@ -1,37 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="br">
-<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 
-<head>
     <link href="/assets/img/logo.png" rel="icon">
 
     <title>Cadastro de Ocorrência</title>
     <div th:replace="~{/fragments/heads.html :: heads}"></div>
-</head>
 
 <body>
-<div class="container-fluid position-relative d-flex p-0">
-    <!-- Spinner Start -->
-    <div id="spinner"
-         class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justYify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Carregando...</span>
-        </div>
-    </div>
-    <!-- Spinner End -->
+<!-- Sidebar Start -->
+<div th:replace="~{/fragments/sidebar.html :: sidebar}"></div>
+<!-- Sidebar End -->
 
 <div class="navbar p-4">
-    <!-- Sidebar Start -->
-    <div th:replace="~{/fragments/sidebar.html :: sidebar}"></div>
-    <!-- Sidebar End -->
 
 
-    <form th:action="@{/ocorrencia/salvar}" th:object="${ocorrencia}" method="post">
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
             <div th:replace="~{/fragments/navbar.html :: navbar}"></div>
             <!-- Navbar End -->
+
+            <form th:action="@{/ocorrencia/salvar}" th:object="${ocorrencia}" method="post">
 
             <!-- Form Start -->
             <div class="container-fluid pt-4 px-4" >
@@ -60,21 +49,9 @@
                     </div>
 
                     <div class="form-floating mb-3">
-                        <select class="form-select" id="floatingSelect"
-                                aria-label="Floating label select example">
-                            <option selected>Selecione tipo de ocorrência</option>
-                            <option value="1">Buraco</option>
-                            <option value="2">Barranco</option>
-                            <option value="3">Arvores</option>
-                            <option value="3">Muros</option>
-                            <option value="3">Iluminação</option>
-                        </select>
-                    </div>
-
-                    <div class="form-floating mb-3">
                         <select th:field="*{tipoOcorrencia}"
                                 aria-label="Floating label select example"
-                                class="bg-dark text-black-50 form-select" style="padding: 15px 12px 15px 12px">
+                                class="bg-dark text-var(--light) form-select" style="padding: 15px 12px 15px 12px">
                             <option value="">Selecione tipo de ocorrência</option>
                             <option
                                     th:each="tipoocorrencia: ${tipoocorrencias}"
