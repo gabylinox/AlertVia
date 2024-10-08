@@ -2,10 +2,7 @@ package br.com.alertvia.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +18,7 @@ import lombok.NoArgsConstructor;
 
 public class Ocorrencia {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -28,6 +26,8 @@ public class Ocorrencia {
     private String comentario;
     @OneToOne
     private TipoOcorrencia tipoOcorrencia;
+
+    private String image;
 
 
 

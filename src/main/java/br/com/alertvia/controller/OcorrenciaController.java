@@ -77,8 +77,7 @@ public class OcorrenciaController {
         ocorrenciaRepository.save(ocorrencia);
 
         String fileName = ocorrencia.getId() + "." + extensao;
-
-        //ocorrencia.setImage(fileName);
+        ocorrencia.setImage(fileName);
 
         String uploadPasta =  "src/main/resources/static/assets/img/fotos-ocorrencias";
 
@@ -87,7 +86,7 @@ public class OcorrenciaController {
         FileUploadUtil.saveFile(uploadPasta, fileName, multipartFile);
 
         //return "redirect:/ocorrencia/form-inserir";
-        return "redirect:/ocorrencia/ocorrencias";
+        return "redirect:/ocorrencia";
     }
 
 

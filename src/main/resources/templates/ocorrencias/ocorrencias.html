@@ -20,7 +20,7 @@
             <div th:replace="~{/fragments/navbar.html :: navbar}"></div>
             <!-- Navbar End -->
 
-            <form th:action="@{/ocorrencia/salvar}" th:object="${ocorrencia}" method="post">
+            <form th:action="@{/ocorrencia/salvar}" th:object="${ocorrencia}" enctype="multipart/form-data" method="post">
 
             <!-- Form Start -->
             <div class="container-fluid pt-4 px-4" >
@@ -72,7 +72,7 @@
 
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Anexe aqui a foto de sua ocorrencia!</label>
-                        <input class="form-control bg-dark" type="file" id="formFile">
+                        <input class="form-control bg-dark" type="file" id="formFile" name="foto">
                     </div>
 
                     <center>
