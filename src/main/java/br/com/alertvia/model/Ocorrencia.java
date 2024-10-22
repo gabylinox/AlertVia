@@ -23,13 +23,16 @@ public class Ocorrencia {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
-
     private String comentario;
-
     @OneToOne
     private TipoOcorrencia tipoOcorrencia;
 
     private String image;
+
+
+
+
+
 
     public void setId(Long id) {
         this.id = id;

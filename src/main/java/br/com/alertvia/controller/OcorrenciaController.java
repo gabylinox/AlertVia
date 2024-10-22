@@ -22,7 +22,6 @@ import java.io.IOException;
 public class OcorrenciaController {
     @Autowired
     private OcorrenciaRepository ocorrenciaRepository;
-
     @Autowired
     private TipoOcorrenciaRepository tipoOcorrenciaRepository;
 
