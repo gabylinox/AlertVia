@@ -48,7 +48,7 @@
                                         <thead>
                                         <tr>
                                             <th style="width: 7%">ID</th>
-                                            <th>Local</th>
+                                            <th>CEP</th>
                                             <th>Urgência</th>
                                             <th>Imagens</th>
                                             <th class="text-center" style="width: 7%">Ações</th>
@@ -65,10 +65,10 @@
                                                 <span th:text="${ocorrencia.id}">ID</span>
                                             </td>
                                             <td>
-                                                <span th:text="${ocorrencia.endereco.localidade}">Nome</span>
+                                                <span th:text="${ocorrencia.endereco.cep}">Nome</span>
                                             </td>
                                             <td>
-                                                <span>Urgência</span>
+                                                <span th:text="${ocorrencia.tipoOcorrencia.nome}">Tipo de ocorrência</span>
                                             </td>
 
 

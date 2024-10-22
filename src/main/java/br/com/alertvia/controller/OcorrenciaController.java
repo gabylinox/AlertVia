@@ -47,7 +47,7 @@ public class OcorrenciaController {
     public String formAlterar(Model model, @PathVariable Long id){
         Ocorrencia ocorrencia = ocorrenciaRepository.findById(id).get();
         model.addAttribute("ocorrencia", ocorrencia);
-        return "ocorrencia/form-alterar";
+        return "ocorrencias/form-alterar";
         //return "ocorrencias/ocorrencias";
     }
 
