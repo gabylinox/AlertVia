@@ -24,7 +24,9 @@ public class Ocorrencia {
     @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
     private String comentario;
-    @OneToOne
+
+
+    @ManyToOne
     private TipoOcorrencia tipoOcorrencia;
 
     private String image;
