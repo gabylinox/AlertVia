@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="br">
+<div th:replace="~{/fragments/heads.html :: heads}"></div>
+
+<head>
+    <title>AlertVia</title>
+</head>
+
+<body>
+
+    <div th:replace="~{/fragments/sidebar.html :: sidebar}"></div>
+
+    <div class="content">
+        <!-- Navbar Start -->
+        <div th:replace="~{/fragments/navbar.html :: navbar}"></div>
+        <!-- Navbar End -->
+
+
+        <!-- Sale & Revenue Start -->
+        <div class="container-fluid pt-4 px-4">
+            <div class="row g-4">
+                <div class="col-sm-6 col-xl-3">
+                    <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                        <i class="fa fa-chart-line fa-3x text-primary"></i>
+                        <div class="ms-3">
+                            <p class="mb-2">Ocorrências recebidas</p>
+                            <h6 class="mb-0">19</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                        <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                        <div class="ms-3">
+                            <p class="mb-2">Ocorrências atendidas</p>
+                            <h6 class="mb-0">9</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                        <i class="fa fa-chart-area fa-3x text-primary"></i>
+                        <div class="ms-3">
+                            <p class="mb-2">Somente este mês</p>
+                            <h6 class="mb-0">12</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3">
+                    <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                        <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                        <div class="ms-3">
+                            <p class="mb-2">Segurança de vias</p>
+                            <h6 class="mb-0">47,5%</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            .
+        </div>
+
+        <div class="container">
+            <div class="page-inner">
+                <div class="page-header">
+                    <center><h3 class="fw-bold mb-3">Cadastro de Usuarios</h3></center>
+
+                </div>
+                <div class="row">
+                    <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <span th:text="${mensagem}"></span>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col-md-12">
+                        <div class="card"style="background-color: #1e2125">
+                            <div class="card-header">
+
+                                <span class="card-title">Listagem de Usuario</span>
+                                <a
+                                        th:href="@{/user/form-inserir}"
+                                        class="btn btn-primary"
+                                        style="float: right"
+                                > Novo Cidadão</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table
+                                            id="basic-datatables"
+                                            class="display table table-striped table-hover"
+                                    >
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 7%">ID</th>
+                                            <th>Nome</th>
+                                            <th>Email</th>
+                                            <th>Imagens</th>
+                                            <th class="text-center" style="width: 7%">Ações</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <tr>
+                                            <td colspan="4">Nenhum registro encontrado</td>
+                                        </tr>
+
+                                        <tr th:each="usuario : ${usuarios}" >
+                                            <td style="width: 7%">
+                                                <span th:text="${usuario.id}">ID</span>
+                                            </td>
+                                            <td>
+                                                <span th:text="${usuario.firstName}">Nome</span>
+                                            </td>
+                                            <img class="imagem-modal" th:src="@{/assets/img/fotos-ocorrencias/{image}(image=${ocorrencias.image})}" alt="Descrição da imagem" style="height: 100px">
+
+                                            <td>
+                                                usuario
+                                            <td class="text-center" style="width: 7%">
+                                                <a th:href="@{/user/form-alterar/{id}(id=${usuario.id})}" class="edit" data-toggle="modal">
+                                                    <i class="fa fa-edit" data-toggle="tooltip" title="Alterar"></i>
+                                                </a>
+                                                <a th:href="@{/user/excluir/{id}(id=${usuario.id})}"
+                                                   th:data-confirm-delete="|Você gostaria de apagar ${usuario.firstName}?|"
+                                                   onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false"
+
+                                                   id="alertDelete"
+                                                   class="delete">
+                                                    <i class="fa fa-times" style="color: red; margin-left: 10px;" data-toggle="tooltip" title="Excluir"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Footer Start -->
+        <div th:replace="~{/fragments/footer.html :: footer}"></div>
+        <!-- Footer End -->
+    </div>
+    <!-- Content End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</div>
+
+<!-- JavaScript Libraries -->
+<div th:replace="~{/fragments/javascript-lib.html :: javascriptlib}"></div>
+
+</body>
+</html>
+
