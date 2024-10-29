@@ -1,4 +1,4 @@
-package br.com.alertvia.Repository;
+package br.com.alertvia.repository;
 
 import br.com.alertvia.model.Cidadao;
 import org.springframework.data.jpa.repository.JpaRepository;

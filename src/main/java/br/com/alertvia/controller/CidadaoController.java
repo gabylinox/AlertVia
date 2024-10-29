@@ -1,8 +1,7 @@
 package br.com.alertvia.controller;
 
-import br.com.alertvia.Repository.CidadaoRepository;
+import br.com.alertvia.repository.CidadaoRepository;
 import br.com.alertvia.model.Cidadao;
-import br.com.alertvia.model.Endereco;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

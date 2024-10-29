@@ -52,6 +52,41 @@
         </div>
         <!-- Sale & Revenue End -->
 
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Ordens de Serviço no Ano</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="lineChart"></canvas>
+                        </div>
+                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
+                                data-bs-target="#lineChartModal">
+                            Editar Gráfico de Linha
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Ordens de Serviço por Mês</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="barChart"></canvas>
+                        </div>
+                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal"
+                                data-bs-target="#barChartModal">
+                            Editar Gráfico de Barra
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
 
         <!-- Sales Chart Start -->
         <div class="container-fluid pt-4 px-4">
@@ -97,3 +132,267 @@
 </body>
 
 </html>
+<script>
+    var lineChart = document.getElementById("lineChart").getContext("2d"),
+        barChart = document.getElementById("barChart").getContext("2d"),
+        pieChart = document.getElementById("pieChart").getContext("2d"),
+        doughnutChart = document
+            .getElementById("doughnutChart")
+            .getContext("2d");
+
+    var myLineChart = new Chart(lineChart, {
+        type: "line",
+        data: {
+            labels: [
+                "Jan",
+                "Fev",
+                "Mar",
+                "Abr",
+                "Mai",
+                "Jun",
+                "Jul",
+                "Ago",
+                "Set",
+                "Out",
+                "Nov",
+                "Dez",
+            ],
+            datasets: [
+                {
+                    label: "Ordens de Serviço",
+                    borderColor: "#1d7af3",
+                    pointBorderColor: "#FFF",
+                    pointBackgroundColor: "#1d7af3",
+                    pointBorderWidth: 2,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 4,
+                    backgroundColor: "transparent",
+                    fill: true,
+                    borderWidth: 2,
+                    data: [
+                        542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 900,
+                    ],
+                },
+            ],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                position: "bottom",
+                labels: {
+                    padding: 10,
+                    fontColor: "#1d7af3",
+                },
+            },
+            tooltips: {
+                bodySpacing: 4,
+                mode: "nearest",
+                intersect: 0,
+                position: "nearest",
+                xPadding: 10,
+                yPadding: 10,
+                caretPadding: 10,
+            },
+            layout: {
+                padding: {left: 15, right: 15, top: 15, bottom: 15},
+            },
+        },
+    });
+
+    loadLineChart();
+
+    var myBarChart = new Chart(barChart, {
+        type: "bar",
+        data: {
+            labels: [
+                "Jan",
+                "Fev",
+                "Mar",
+                "Abr",
+                "Mai",
+                "Jun",
+                "Jul",
+                "Ago",
+                "Set",
+                "Out",
+                "Nov",
+                "Dez",
+            ],
+            datasets: [
+                {
+                    label: "Ordens de Serviço",
+                    backgroundColor: "rgb(23, 125, 255)",
+                    borderColor: "rgb(23, 125, 255)",
+                    data: [3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4],
+                },
+            ],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                yAxes: [
+                    {
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                    },
+                ],
+            },
+        },
+    });
+
+
+
+    var myPieChart = new Chart(pieChart, {
+        type: "pie",
+        data: {
+            datasets: [
+                {
+                    data: [50, 35, 15],
+                    backgroundColor: ["#1d7af3", "#f3545d", "#fdaf4b"],
+                    borderWidth: 0,
+                },
+            ],
+            labels: ["Secretaria", "Diretoria", "Escola"],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                position: "bottom",
+                labels: {
+                    fontColor: "rgb(154, 154, 154)",
+                    fontSize: 11,
+                    usePointStyle: true,
+                    padding: 20,
+                },
+            },
+            pieceLabel: {
+                render: "percentage",
+                fontColor: "white",
+                fontSize: 14,
+            },
+            tooltips: false,
+            layout: {
+                padding: {
+                    left: 20,
+                    right: 20,
+                    top: 20,
+                    bottom: 20,
+                },
+            },
+        },
+    });
+
+    var myDoughnutChart = new Chart(doughnutChart, {
+        type: "doughnut",
+        data: {
+            datasets: [
+                {
+                    data: [10, 20, 30],
+                    backgroundColor: ["#f3545d", "#fdaf4b", "#1d7af3"],
+                },
+            ],
+
+            labels: ["Secretaria", "Diretoria", "Escola"],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                position: "bottom",
+            },
+            layout: {
+                padding: {
+                    left: 20,
+                    right: 20,
+                    top: 20,
+                    bottom: 20,
+                },
+            },
+        },
+    });
+
+
+    var myLegendContainer = document.getElementById("myChartLegend");
+
+    // generate HTML legend
+    myLegendContainer.innerHTML = myHtmlLegendsChart.generateLegend();
+
+    // bind onClick event to all LI-tags of the legend
+    var legendItems = myLegendContainer.getElementsByTagName("li");
+    for (var i = 0; i < legendItems.length; i += 1) {
+        legendItems[i].addEventListener("click", legendClickCallback, false);
+    }
+
+    $(document).ready(function (){
+        //alert("teste");
+    });
+
+    // Função para carregar o gráfico de linha com os dados do banco com api/servicos/servicos-ano-corrente
+    //
+    function loadLineChart() {
+        fetch("/api/servicos/servicos-ano-corrente")
+            .then((response) => response.json())
+            .then((data) => {
+                myLineChart.data.datasets[0].data = data;
+                myBarChart.data.datasets[0].data = data;
+                myBarChart.update();
+                myLineChart.update();
+            });
+    }
+
+    function loadBarChart() {
+        fetch("/api/ocorrencia/ocorrencias-ano-corrente")
+            .then((response) => response.json())
+            .then((data) => {
+                myBarChart.data.datasets[0].data = data;
+                myBarChart.update();
+            });
+    }
+
+
+
+    // Função para atualizar o gráfico de linha
+    function updateLineChart() {
+        const inputData = document.getElementById("lineChartData").value;
+        const dataArray = inputData.split(',').map(Number);
+
+        myLineChart.data.datasets[0].data = dataArray;
+        myLineChart.update();
+    }
+
+    // Função para atualizar o gráfico de barras
+    function updateBarChart() {
+        const inputData = document.getElementById("barChartData").value;
+        const dataArray = inputData.split(',').map(Number);
+
+        myBarChart.data.datasets[0].data = dataArray;
+        myBarChart.update();
+    }
+
+    // Função para atualizar o gráfico de pizza
+    function updatePieChart() {
+        const inputData = document.getElementById("pieChartData").value;
+        const dataArray = inputData.split(',').map(Number);
+
+        myPieChart.data.datasets[0].data = dataArray;
+        myPieChart.update();
+    }
+
+    // Função para atualizar o gráfico de rosquinha
+    function updateDoughnutChart() {
+        const inputData = document.getElementById("doughnutChartData").value;
+        const dataArray = inputData.split(',').map(Number);
+
+        myDoughnutChart.data.datasets[0].data = dataArray;
+        myDoughnutChart.update();
+    }
+
+
+    loadLineChart();
+
+</script>

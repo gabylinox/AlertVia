@@ -1,9 +1,9 @@
 package br.com.alertvia.controller;
 
-import br.com.alertvia.Repository.TipoOcorrenciaRepository;
+import br.com.alertvia.repository.TipoOcorrenciaRepository;
 import br.com.alertvia.model.Endereco;
 import br.com.alertvia.model.Ocorrencia;
-import br.com.alertvia.Repository.OcorrenciaRepository;
+import br.com.alertvia.repository.OcorrenciaRepository;
 import br.com.alertvia.util.FileUploadUtil;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

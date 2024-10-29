@@ -1,21 +1,14 @@
 package br.com.alertvia.controller;
 
-import br.com.alertvia.Repository.TipoOcorrenciaRepository;
-import br.com.alertvia.model.Endereco;
-import br.com.alertvia.model.Ocorrencia;
+import br.com.alertvia.repository.TipoOcorrenciaRepository;
 import br.com.alertvia.model.TipoOcorrencia;
-import br.com.alertvia.util.FileUploadUtil;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.io.IOException;
 
 @Controller
 @RequestMapping("/tipoocorrencia")
