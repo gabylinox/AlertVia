@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="br">
+<div th:replace="~{/fragments/heads.html :: heads}"></div>
+
+<head>
+    <title>AlertVia</title>
+    <style>
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Altura total da tela */
+        }
+    </style>
+</head>
+
+<body>
+
+<div th:replace="~{/fragments/sidebar.html :: sidebar}"></div>
+
+<div class="content">
+
+    <div th:replace="~{/fragments/navbar.html :: navbar}"></div>
+
+    <strong><p class="fs-3 text-center text-danger">AlertVia</p></strong>
+
+    <button type="button" class="btn btn-primary">Primary</button>
+
+    <h6 class="fs-6 text-center">
+        Bem-vindos à AlertVia, a plataforma que coloca a segurança das vias nas mãos da comunidade.
+        Através de um sistema simples e eficiente, os cidadãos podem reportar problemas urbanos e contribuir para a melhoria da infraestrutura.
+    </h6>
+
+    <p class="fs-5 text-center text-warning-emphasis">Cadastre uma nova ocorrência aqui!</p>
+
+    <center>
+        <a th:href="@{/ocorrencia/form-inserir}" class="btn btn-primary">Nova Ocorrência</a>
+    </center>
+
+    <!-- Footer Start -->
+    <div th:replace="~{/fragments/footer.html :: footer}"></div>
+    <!-- Footer End -->
+</div>
+<!-- Content End -->
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+<!-- JavaScript Libraries -->
+<div th:replace="~{/fragments/javascript-lib.html :: javascriptlib}"></div>
+
+</body>
+</html>

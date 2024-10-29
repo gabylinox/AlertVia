@@ -4,8 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Data;
+import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
 )
 
 
+
 public class Ocorrencia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +26,11 @@ public class Ocorrencia {
     @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
     private String comentario;
+
+    @Basic
+    @Temporal(TemporalType.DATE)
+    private Date dataCadastro;
+
 
 
     @ManyToOne

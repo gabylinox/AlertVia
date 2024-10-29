@@ -3,7 +3,7 @@ package br.com.alertvia.controller;
 import br.com.alertvia.Repository.TipoOcorrenciaRepository;
 import br.com.alertvia.model.Endereco;
 import br.com.alertvia.model.Ocorrencia;
-import br.com.alertvia.repository.OcorrenciaRepository;
+import br.com.alertvia.Repository.OcorrenciaRepository;
 import br.com.alertvia.util.FileUploadUtil;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/ocorrencia")
@@ -74,12 +75,14 @@ public class OcorrenciaController {
 
         attributes.addFlashAttribute("mensagem", "Ocorrencia salva com sucesso!");
 
+        ocorrencia.setDataCadastro(new Date());
         ocorrenciaRepository.save(ocorrencia);
 
         String fileName = ocorrencia.getId() + "." + extensao;
         ocorrencia.setImage(fileName);
 
         String uploadPasta =  "src/main/resources/static/assets/img/fotos-ocorrencias";
+
 
         ocorrenciaRepository.save(ocorrencia);
 

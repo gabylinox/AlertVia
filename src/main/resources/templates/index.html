@@ -11,55 +11,37 @@
 <div th:replace="~{/fragments/sidebar.html :: sidebar}"></div>
 
 <div class="content">
-    <!-- Navbar Start -->
-    <div th:replace="~{/fragments/navbar.html :: navbar}"></div>
-    <!-- Navbar End -->
-
-    <!-- Cards Start -->
-
-    <!-- Cards End -->
-
-    <strong><p class="fs-3 text-center text-danger">AlertVia</p></strong>
-
-    <h6 class="fs-5 text-center">
-        Bem-vindos à AlertVia, a plataforma que coloca a segurança das vias nas mãos da comunidade.
-        Através de um sistema simples e eficiente, os cidadãos podem reportar problemas urbanos e contribuir para a melhoria da infraestrutura.
-    </h6>
-
-    <p class="fs-5 text-center text-warning-emphasis">Cadastre uma nova ocorrência aqui!</p>
 
 
+
+    <strong><p class="fs-3 text-center text-black">.</p></strong>
     <center>
         <a th:href="@{/ocorrencia/form-inserir}" class="btn btn-primary">Nova Ocorrência</a>
     </center>
 
-    <div class="d-flex justify-content-center mt-4">
-        <div class="card m-2" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card 1</h5>
-                <p class="card-text">Este é o primeiro card. Descreva o conteúdo aqui.</p>
-                <a href="#" class="btn btn-primary">Ação 1</a>
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/assets/img/boasvindas.png" class="d-block w-100" alt="..."><img/>
+            </div>
+            <div class="carousel-item">
+                <img  src="/assets/img/sobrenós(1).png" class="d-block w-100" alt="..."><img />
+            </div>
+            <div class="carousel-item">
+                <img  src="/assets/img/info(5).png" class="d-block w-100" alt="..."><img />
             </div>
         </div>
-        <div class="card m-2" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card 2</h5>
-                <p class="card-text">Este é o segundo card. Descreva o conteúdo aqui.</p>
-                <a href="#" class="btn btn-primary">Ação 2</a>
-            </div>
-        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 
-    <!-- Footer Start -->
-    <div th:replace="~{/fragments/footer.html :: footer}"></div>
-    <!-- Footer End -->
-</div>
-<!-- Content End -->
 
-<!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-<!-- JavaScript Libraries -->
 <div th:replace="~{/fragments/javascript-lib.html :: javascriptlib}"></div>
 
 </body>
