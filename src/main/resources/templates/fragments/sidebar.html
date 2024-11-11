@@ -30,10 +30,10 @@
                     </span>
             </div>
             <div class="navbar-nav w-100">
-                <a href="/a/index" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Inicio</a>
-                <a href="/ocorrencia" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Ocorrências</a>
-                <a href="/user" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Usuários</a>
-                <a href="/a/teste" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Estatísticas</a>
+                <a href="/a/index" class="nav-item nav-link" onclick="setActive(this)"><i class="fa fa-tachometer-alt me-2"></i>Inicio</a>
+                <a href="/ocorrencia" class="nav-item nav-link "onclick="setActive(this)"><i class="fa fa-th me-2"></i>Ocorrências</a>
+                <a href="/user" class="nav-item nav-link"onclick="setActive(this)"><i class="fa fa-th me-2"></i>Usuários</a>
+                <a href="/a/teste" class="nav-item nav-link"onclick="setActive(this)"><i class="fa fa-keyboard me-2"></i>Estatísticas</a>
             </div>
 
 
@@ -43,5 +43,27 @@
     </div>
 
 </div>
+<script>
+    function setActive(element) {
+        // Remove a classe "active" de todos os itens
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => item.classList.remove('active'));
+
+        // Adiciona a classe "active" no item que foi clicado
+        element.classList.add('active');
+    }
+
+    // Quando a página for carregada, adiciona a classe "active" no link correto baseado no URL
+    window.addEventListener('load', function() {
+        const currentPath = window.location.pathname; // Obtém o caminho da URL
+        const navLinks = document.querySelectorAll('.nav-item');
+
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active'); // Adiciona a classe 'active' no item correspondente à URL
+            }
+        });
+    });
+</script>
 </body>
 </html>
