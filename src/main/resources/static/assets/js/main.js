@@ -80,28 +80,23 @@
             responsive: true
         }
     });
-
-
-
-
-    // Salse & Revenue Chart
-    var ctx2 = $("#salse-revenue").get(0).getContext("2d");
-    var myChart2 = new Chart(ctx2, {
-        type: "line",
+    var ctx10 = $("#worldwide-saless").get(0).getContext("2d");
+    var myChart10 = new Chart(ctx10, {
+        type: "bar",
         data: {
             labels: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"],
             datasets: [{
-                    label: "Ocorrências",
+                label: "OCORRÊNCIAS ATENDIDAS",
                 data: [15, 30, 55, 65, 60, 80, 95, 100, 120, 140, 160, 180],
-                    backgroundColor: "rgba(235, 22, 22, .7)",
-                    fill: true
-                }
-            ]
-            },
+                backgroundColor: "rgba(235, 22, 22, .7)"
+            }]
+        },
         options: {
             responsive: true
         }
     });
+
+
 
     // atualiza o grafico myChart1
     function atualizaGrafico1() {
@@ -115,17 +110,27 @@
         });
     }
 
+    function atualizaGrafico10() {
+        $.ajax({
+            url: '/api/ocorrencia/ocorrencias-fechamento',
+            type: 'GET',
+            success: function (data10) {
+                myChart10.data.datasets[0].data = data10;
+                myChart10.update();
+            }
+        });
+    }
+
     atualizaGrafico1();
+    atualizaGrafico10()
 
 
     function atualizaGrafico2() {
         $.ajax({
-            url: '/api/ocorrencia/ocorrencias-ano-corrente',
+            url: '/api/ocorrencia/ocorrencias-fechamento',
             type: 'GET',
             success: function (data2) {
-                alert(data2);
                 myChart2.data.datasets[0].data = data2;
-                alert(myChart2.data.datasets[0].data);
                 myChart2.update();
             }
         });

@@ -20,4 +20,9 @@ public class OcorrenciaRestController {
         return ocorrenciaRepository.imprimirServicosPorMes();
     }
 
+    @GetMapping ("/ocorrencias-fechamento")
+    public List<Object[]> servicosfechamento(){
+        return ocorrenciaRepository.imprimirQuantidadeServicosAtendidosPorMes();
+    }
+
 }

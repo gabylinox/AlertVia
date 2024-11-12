@@ -70,10 +70,23 @@
                         <label for="floatingTextarea">Comentarios</label>
                     </div>
 
+                    <div class="form-floating mb-3" style="background-color: #1e2125">
+                        <input class="form-control" type="date" id="dataFechamento" th:field="*{dataFechamento}">
+                        <label for="cep">Data de fechamento</label>
+                    </div>
+
+                    <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here"
+                                          id="dsFechamento" style="height: 150px;" th:field="*{dsFechamento}"></textarea>
+                        <label for="floatingTextarea">Descrição de fechamento</label>
+                    </div>
+
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Anexe aqui a foto de sua ocorrencia!</label>
                         <input class="form-control bg-dark" type="file" id="formFile" name="foto">
                     </div>
+
+
 
                     <center>
                         <button type="submit" class="btn btn-primary py-3 w-25 mb">Cadastrar</button>

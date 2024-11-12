@@ -31,6 +31,12 @@ public class Ocorrencia {
     @Temporal(TemporalType.DATE)
     private Date dataCadastro;
 
+    @Basic
+    @Temporal(TemporalType.DATE)
+    private Date dataFechamento;
+
+    private String dsFechamento;
+
 
 
     @ManyToOne
