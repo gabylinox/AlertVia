@@ -7,6 +7,7 @@ import br.com.alertvia.repository.OcorrenciaRepository;
 import br.com.alertvia.util.FileUploadUtil;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -29,7 +30,7 @@ public class OcorrenciaController {
 
     @GetMapping
     public String listar(Model model){
-        model.addAttribute("ocorrencias",     ocorrenciaRepository.findAll());
+        model.addAttribute("ocorrencias",     ocorrenciaRepository.findAll(Sort.by(Sort.Direction.DESC,"id")));
         return "ocorrencias/listagem";
         //return "ocorrencias/ocorrencias";
     }
@@ -41,7 +42,6 @@ public class OcorrenciaController {
         model.addAttribute("tipoocorrencias", tipoOcorrenciaRepository.findAll());
 
         return "ocorrencias/ocorrencias";
-
     }
 
     @GetMapping("/form-alterar/{id}")
@@ -68,7 +68,7 @@ public class OcorrenciaController {
     {
 
         if(result.hasErrors()){
-            return "ocorrencia/form-inserir";
+            return "ocorrencias/form-inserir";
         }
 
         String extensao = StringUtils.getFilenameExtension(multipartFile.getOriginalFilename());
@@ -91,8 +91,5 @@ public class OcorrenciaController {
         //return "redirect:/ocorrencia/form-inserir";
         return "redirect:/ocorrencia";
     }
-
-
-
 
 }
